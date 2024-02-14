@@ -5,6 +5,10 @@
              Title="PageInit">
     <VerticalStackLayout>
 
+        <Image x:Name="foto" BackgroundColor="AliceBlue"  HeightRequest="300" WidthRequest="300"
+               HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+        <Button Text="Seleccionar una imagen" x:Name="btnfoto" Clicked="Btnfoto_Clicked" />
 
         <Entry x:Name="nombres" Placeholder="Ingrese su nombre" Keyboard="Text" />
 
@@ -14,7 +18,7 @@
 
         <Entry x:Name="telefono" Placeholder="Ingrese su telefono" Keyboard="Telephone" />
 
-        <Button x:Name="btnprocesar" Text="Procesar" Clicked="btnprocesar_Clicked"/>
+        <Button x:Name="btnprocesar" Text="Procesar" Clicked="Btnprocesar_Clicked"/>
 
     </VerticalStackLayout>
 </ContentPage>

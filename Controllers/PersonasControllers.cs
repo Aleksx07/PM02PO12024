@@ -10,64 +10,57 @@ namespace PM02PO12024.Controllers
 {
     public class PersonasControllers
     {
-        SQLiteAsyncConnection _connection;
+        readonly SQLiteAsyncConnection _connection;
 
-        //Constructor vacio 
-        public PersonasControllers() { }
-
-        //Conexion a la base de datos
-        async Task Init()
+        // Constructor Vacion
+        public PersonasControllers()
         {
-            if (_connection is not null)
-            {
-                return; 
-            }
-            SQLite.SQLiteOpenFlags extensiones = SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | 
-                                                 SQLiteOpenFlags.SharedCache; 
-            _connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, "DBPersonas.db3"), extensiones);
+            SQLite.SQLiteOpenFlags extensiones = SQLite.SQLiteOpenFlags.ReadWrite |
+                                                SQLite.SQLiteOpenFlags.Create |
+                                                SQLite.SQLiteOpenFlags.SharedCache;
 
-            var creacion = await _connection.CreateTableAsync<Personas>();
+            _connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, "DBPersonsas.db3"), extensiones);
+
+            _connection.CreateTableAsync<Personas>();
         }
 
-        //Crear los metodos Crud para la clase Personas 
-        //Create //Update 
+
+
+        // Crear los metodos Crud para la clase Personas
+        // Create  // Update
         public async Task<int> StorePerson(Personas personas)
         {
-            await Init();
-            if(personas.Id == 0)
+
+            if (personas.Id == 0)
             {
                 return await _connection.InsertAsync(personas);
-
-            } else
+            }
+            else
             {
                 return await _connection.UpdateAsync(personas);
             }
         }
 
-        //Read 
-        public async Task<List<Models.Personas>> GetListPersons(){
-            await Init();
-            return await _connection.Table<Models.Personas>().ToListAsync();
-
-        }
-
-        //Read Element
-        public async Task<Models.Personas> GetListPersons(int pid)
+        // Read
+        public async Task<List<Models.Personas>> GetListPersons()
         {
-            await Init();
-            return await _connection.Table<Personas>().Where(i => i.Id == pid).FirstOrDefaultAsync();
 
+            return await _connection.Table<Personas>().ToListAsync();
         }
 
-        //Delete Element 
+        // Read Element
+        public async Task<Models.Personas> GePerson(int pid)
+        {
+
+            return await _connection.Table<Personas>().Where(i => i.Id == pid).FirstOrDefaultAsync();
+        }
+
+        // Delete Element
         public async Task<int> DeletePerson(Personas personas)
         {
-            await Init();
+
             return await _connection.DeleteAsync(personas);
-
         }
-
-
 
     }
 }

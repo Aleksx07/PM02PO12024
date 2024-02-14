@@ -24,7 +24,7 @@ namespace PM02PO12024.Models
       [Unique]
       public string telefono { get; set; }
     
-
+      public string foto { get; set; }  
 
 
 
