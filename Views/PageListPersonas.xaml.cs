@@ -23,4 +23,10 @@ public partial class PageListPersonas : ContentPage
         base.OnAppearing();
         listperson.ItemsSource = await App.Database.GetListPersons();
     }
+
+    private async void ToolbarItem_Clicked_1(object sender, EventArgs e)
+    {
+        var page = new Views.PageMaps();
+        await Navigation.PushAsync(page);
+    }
 }

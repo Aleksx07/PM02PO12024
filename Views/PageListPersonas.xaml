@@ -11,6 +11,7 @@
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Agregar" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Maps" Clicked="ToolbarItem_Clicked_1" />
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
@@ -31,7 +32,7 @@
                         <Image x:Name="foto" 
                                HeightRequest="70" 
                                WidthRequest="70"
-                               Aspect="AspectFill"
+                               Aspect="Fill"
                                Source="{Binding foto, Converter={StaticResource BaseArray} }"
                                />
                         

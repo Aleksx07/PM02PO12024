@@ -13,8 +13,8 @@ namespace PM02PO12024
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
-
+                })
+                .UseMauiMaps();
 
             builder.Services.AddSingleton<Controllers.PersonasControllers>();
             return builder.Build();

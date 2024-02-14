@@ -9,10 +9,10 @@ namespace PM02PO12024.Controllers
 {
     public class Base64Image : IValueConverter
     {
-        public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             ImageSource imageSource = null; 
-            if (value == null)
+            if (value != null)
             {
                 String Base64 = (String)value;
                 byte[] fotobyte = System.Convert.FromBase64String(Base64);
@@ -24,7 +24,7 @@ namespace PM02PO12024.Controllers
             return imageSource; 
         }
 
-        public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
